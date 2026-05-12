@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Break The Box</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Caveat', cursive;
+        min-height: 100vh;
+        background-color: #f7f6ef;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 27px,
+          #b8cfe0 27px,
+          #b8cfe0 28px
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 44px 20px 60px;
+      }
+
+      h1 {
+        font-size: 3.6rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: #1a1a1a;
+        text-align: center;
+        margin-bottom: 52px;
+        line-height: 1;
+      }
+
+      .box-wrapper {
+        margin-bottom: 44px;
+      }
+
+      .form-area {
+        width: 100%;
+        max-width: 260px;
+      }
+
+      label {
+        display: block;
+        font-size: 1.55rem;
+        color: #1a1a1a;
+        margin-bottom: 2px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        border: 1.5px solid #1a1a1a;
+        background: rgba(255, 255, 255, 0.55);
+        font-family: 'Caveat', cursive;
+        font-size: 1.2rem;
+        padding: 5px 8px;
+        outline: none;
+        margin-bottom: 22px;
+        border-radius: 0;
+      }
+
+      input:focus {
+        background: white;
+      }
+
+      button {
+        font-family: 'Caveat', cursive;
+        font-size: 1.45rem;
+        background: transparent;
+        border: 1.5px solid #1a1a1a;
+        padding: 8px 0;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 0;
+        letter-spacing: 0.05em;
+      }
+
+      button:hover {
+        background: #1a1a1a;
+        color: #f7f6ef;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>BREAK THE BOX</h1>
+
+    <div class="box-wrapper">
+      <svg width="230" height="210" viewBox="0 0 230 210" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="sketchy">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g filter="url(#sketchy)" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="white">
+          <polygon points="30,75 150,75 150,190 30,190" />
+          <polygon points="30,75 150,75 195,38 75,38" />
+          <polygon points="150,75 195,38 195,153 150,190" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="form-area">
+      <form action="/login" method="post">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+
+  </body>
+</html>
