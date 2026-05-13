@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break The Box</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fafaf0;
+            background-image:
+                linear-gradient(90deg, transparent 79px, #e8a0a0 79px, #e8a0a0 81px, transparent 81px),
+                repeating-linear-gradient(
+                    transparent 0px,
+                    transparent 27px,
+                    #b0bcd0 27px,
+                    #b0bcd0 28px
+                );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Caveat', cursive;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 36px;
+            color: #111;
+        }
+
+        .box-svg {
+            display: block;
+            margin: 0 auto 36px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 240px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            color: #222;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 6px 10px;
+            font-size: 1.2rem;
+            font-family: 'Caveat', cursive;
+            border: 2px solid #222;
+            background: transparent;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            padding: 6px 28px;
+            background: transparent;
+            border: 2px solid #222;
+            cursor: pointer;
+            align-self: center;
+        }
+
+        input[type="submit"]:hover {
+            background: #222;
+            color: #f7f7f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BREAK THE BOX</h1>
+
+        <svg class="box-svg" width="460" height="450" viewBox="70 20 360 350">
+            <!-- Front face: 200x200 square -->
+            <polygon points="100,140 300,140 300,340 100,340"
+                     fill="white" stroke="#111" stroke-width="2.5"/>
+            <!-- Top face: 200px wide, 90px deep — matches front width -->
+            <polygon points="100,140 190,50 390,50 300,140"
+                     fill="#e4e4e4" stroke="#111" stroke-width="2.5"/>
+            <!-- Right face: 90px wide, 200px tall — matches front height -->
+            <polygon points="300,140 390,50 390,250 300,340"
+                     fill="#c8c8c8" stroke="#111" stroke-width="2.5"/>
+        </svg>
+
+        <form action="/submit" method="post" class="form-section">
+            <label for="timezone">timezone</label>
+            <input type="text" id="timezone" name="timezone" placeholder="e.g. America/New_York">
+            <input type="submit" value="Submit">
+        </form>
+
+        {%if output %}
+        <div class="output-section">
+            <h2>{{timezone}} has time: {{output}}</h2>
+        </div>
+        {% endif %}
+    </div>
+    
+</body>
+</html>
